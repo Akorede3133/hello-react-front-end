@@ -6,7 +6,7 @@ const initialState = {
   error: '',
 };
 
-const getGreeting = createAsyncThunk('greeting/fetchGreeting', async () => {
+export const getGreeting = createAsyncThunk('greeting/fetchGreeting', async () => {
   try {
     const response = await fetch('http://localhost:3000/api/v1/greetings/');
     const result = await response.json();
@@ -14,7 +14,6 @@ const getGreeting = createAsyncThunk('greeting/fetchGreeting', async () => {
     if (!response.ok) {
       throw new Error(response.message);
     }
-    console.log(result);
     return result;
   } catch (error) {
     throw new Error(error.message);
